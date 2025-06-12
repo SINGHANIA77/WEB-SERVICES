@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome for calculator icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="navbar-wrapper">
+      <div class="logo">
+        <img src="internet_16925033.png" alt="" width="40" height="40" />
+        Web Services
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#cards">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Right side: Calculator + Auth + Toggle for mobile -->
+      <div class="navbar-actions">
+        <!-- Calculator Icon -->
+        <button class="calc-icon-btn" onclick="toggleCalculator()" title="Calculator">
+          <i class="fas fa-calculator"></i>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+
+        <!-- Desktop Auth Buttons -->
+        <div class="auth-buttons desktop-auth">
+          <button onclick="openModal('loginModal')">Login</button>
+          <button onclick="openModal('signupModal')">Sign Up</button>
+        </div>
+
+        <!-- Mobile menu toggle icon -->
+        <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-dropdown hidden" id="mobileDropdown">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#cards">Services</a>
+      <a href="#contact">Contact</a>
+      <button onclick="openModal('loginModal')">Login</button>
+      <button onclick="openModal('signupModal')">Sign Up</button>
+    </div>
+  </header>
+
+  <!-- Calculator Section -->
+  <div class="calculator-wrapper" id="calculator-section">
+    <div class="calculator-container">
+      <div class="calculator">
+        <div class="calculator-header">
+          <div class="calculator-title">
+            <i class="fas fa-calculator"></i> Calculator
+          </div>
+          <button class="calculator-close" onclick="toggleCalculator()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <input type="text" id="inputBox" placeholder="0" readonly>
+
+        <div class="row">
+          <button class="button clear-btn">AC</button>
+          <button class="button operator">DEL</button>
+          <button class="button operator">%</button>
+          <button class="button operator">/</button>
+        </div>
+
+        <div class="row">
+          <button class="button">7</button>
+          <button class="button">8</button>
+          <button class="button">9</button>
+          <button class="button operator">*</button>
+        </div>
+
+        <div class="row">
+          <button class="button">4</button>
+          <button class="button">5</button>
+          <button class="button">6</button>
+          <button class="button operator">-</button>
+        </div>
+
+        <div class="row">
+          <button class="button">1</button>
+          <button class="button">2</button>
+          <button class="button">3</button>
+          <button class="button operator">+</button>
+        </div>
+
+        <div class="row">
+          <button class="button">00</button>
+          <button class="button">0</button>
+          <button class="button">.</button>
+          <button class="button equalBtn">=</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL BANNER SECTION -->
+  <section id="home" class="carousel-banner-section">
+    <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+
+      <div class="carousel-inner rounded-3">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+
+          <img src="electronic-device-surrounded-by-nature.jpg" class="d-block w-100" alt="Description">
+          <div class="carousel-caption d-md-block">
+            <h1 class="display-4 fw-bold">Welcome to Our Website</h1>
+            <p class="lead">We create amazing web experiences that inspire and engage your audience.</p>
+            <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="close-up-image-programer-working-his-desk-office.jpg" class="d-block w-100" alt="Description">
+          <div class="carousel-caption d-md-block">
+            <h1 class="display-4 fw-bold">Professional Web Development</h1>
+            <p class="lead">Custom websites built with modern technologies and best practices.</p>
+            <a href="#cards" class="btn btn-success btn-lg">Our Services</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img src="photo-editor-histogram-setting-concept.jpg" class="d-block w-100" alt="Description">
+          <div class="carousel-caption d-md-block">
+            <h1 class="display-4 fw-bold">Beautiful UI/UX Design</h1>
+            <p class="lead">Creating stunning interfaces that provide exceptional user experiences.</p>
+            <a href="#cards" class="btn btn-warning btn-lg">View Portfolio</a>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-item">
+          <img src="web-design-technology-browsing-programming-concept (1).jpg" class="d-block w-100" alt="Description">
+          <div class="carousel-caption d-md-block">
+            <h1 class="display-4 fw-bold">Get Started Today</h1>
+            <p class="lead">Ready to transform your digital presence? Let's work together!</p>
+            <a href="#contact" class="btn btn-info btn-lg">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Login Modal -->
+  <div class="modal-container" id="loginModal">
+    <div class="container">
+      <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <div class="form-group">
+          <input type="email" required>
+          <label>Email</label>
+          <i class="fa fa-envelope"></i>
+        </div>
+        <div class="form-group">
+          <input type="password" required>
+          <label>Password</label>
+          <i class="fa fa-lock"></i>
+        </div>
+        <p><input type="checkbox"> Remember Me <a href="#">Forget Password</a></p>
+        <input id="btn" type="submit" value="Login">
+        <p>Don't have an account? <a href="#" onclick="switchModal()">Register</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal-container" id="signupModal">
+    <div class="container">
+      <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+      <h2>Sign Up</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" required>
+          <label>Username</label>
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="form-group">
+          <input type="email" required>
+          <label>Email</label>
+          <i class="fa fa-envelope"></i>
+        </div>
+        <div class="form-group">
+          <input type="password" required>
+          <label>Password</label>
+          <i class="fa fa-lock"></i>
+        </div>
+        <input id="btn" type="submit" value="Register">
+        <p>Already have an account? <a href="#" onclick="switchModal(true)">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      We are a creative and experienced web development team with a passion for designing responsive and user-friendly
+      websites. Our journey began with a simple goal: to help businesses and individuals establish a strong online
+      presence through beautiful, functional web solutions.
+    </p>
+    <p>
+      Over the years, we have worked on a variety of projects ranging from personal blogs to corporate websites and
+      e-commerce platforms. Our approach is always centered around the user, ensuring that every site we build is
+      intuitive, fast, and accessible.
+    </p>
+    <p>
+      What sets us apart is our dedication to detail and our commitment to delivering top-quality service. Whether you
+      are looking to build a new website from scratch or improve an existing one, we are here to guide you through every
+      step of the process.
+    </p>
+    <p>
+      Our core values include:
+    </p>
+    <ul style="text-align: left; max-width: 800px; margin: 1rem auto;">
+      <li><strong>Innovation:</strong> We embrace new technologies and strive to stay ahead of trends.</li>
+      <li><strong>Quality:</strong> Our focus is on clean code, great design, and long-term results.</li>
+      <li><strong>Transparency:</strong> We communicate clearly and work collaboratively with our clients.</li>
+      <li><strong>Support:</strong> We offer continuous support even after your project goes live.</li>
+    </ul>
+    <p>
+      Thank you for considering us. We look forward to partnering with you to create something amazing.
+    </p>
+  </section>
+
+  <!-- CARDS SECTION -->
+  <section id="cards" class="cards">
+    <div class="card">
+      <h3>Web Development</h3>
+      <p>Custom websites built using modern technologies like HTML, CSS, JavaScript, and React.</p>
+      <div class="images">
+        <div
+          style="width: 150px; height: 100px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+          <i class="fas fa-code" style="font-size: 2rem;"></i>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>UI/UX Design</h3>
+      <p>Clean and effective designs that enhance user experience and boost engagement.</p>
+      <div class="images">
+        <div
+          style="width: 150px; height: 100px; background: linear-gradient(45deg, #764ba2, #667eea); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+          <i class="fas fa-paint-brush" style="font-size: 2rem;"></i>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>SEO Optimization</h3>
+      <p>Improve your visibility on search engines and drive more organic traffic to your site.</p>
+      <div class="images">
+        <div
+          style="width: 150px; height: 100px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+          <i class="fas fa-search" style="font-size: 2rem;"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>We would love to hear from you! Fill out the form below to get in touch.</p>
+
+    <form id="contactForm" novalidate>
+      <div class="form-group">
+        <input type="text" id="contactName" placeholder="Your Name" required />
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="contactEmail" placeholder="Your Email" required />
+      </div>
+
+      <div class="form-group">
+        <textarea id="contactMessage" rows="4" placeholder="Your Message" required maxlength="500"></textarea>
+      </div>
+      <div id="messageCounter" class="character-counter"></div>
+
+      <button type="submit" id="contactSubmit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <div
+          style="width: 70px; height: 70px; background: #667eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+          <img src="internet_16925033.png" alt="" width="40" height="40" />
+        </div>
+        <span>Web Services</span>
+      </div>
+
+      <div class="footer-links">
+        <h4>Learn</h4>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#cards">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" title="Instagram"><i class="fab fa-instagram" style="font-size: 1.5rem; color: white;"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp" style="font-size: 1.5rem; color: white;"></i></a>
+          <a href="#" title="Telegram"><i class="fab fa-telegram" style="font-size: 1.5rem; color: white;"></i></a>
+          <a href="#" title="GitHub"><i class="fab fa-github" style="font-size: 1.5rem; color: white;"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>
